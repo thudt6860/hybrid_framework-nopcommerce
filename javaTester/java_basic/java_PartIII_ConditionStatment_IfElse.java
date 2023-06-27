@@ -16,7 +16,7 @@ public class java_PartIII_ConditionStatment_IfElse {
 	 
 @Test
 	 public void TC_02_If_Else() {
-		// Có tới 2 điều kiện: nếu như đúng thì vào if- sai thì vào else
+		// Có tới 2 điều kiện: nếu như đúng thì vào if- sai thì vào else jhkl
 	
 	// Nếu driver start với browser như Chrome/ Firefox/ Edge/ Safari thì dùng hàm click
 	// Thông thường (builtin) của Selenium WebElement
