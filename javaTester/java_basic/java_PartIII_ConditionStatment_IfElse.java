@@ -11,12 +11,12 @@ import org.testng.annotations.Test;
 public class java_PartIII_ConditionStatment_IfElse {
  WebDriver driver;
  String projectPath = System.getProperty("user.dir");
- 
+ //@Test
  public void TC_01_If() {}
 	 
-@Test
+//@Test
 	 public void TC_02_If_Else() {
-		// Có tới 2 điều kiện: nếu như đúng thì vào if- sai thì vào else jhkl
+		// Có tới 2 điều kiện: nếu như đúng thì vào if- sai thì vào else 
 	
 	// Nếu driver start với browser như Chrome/ Firefox/ Edge/ Safari thì dùng hàm click thay doi vao luc 6:26
 	// Thông thường (builtin) của Selenium WebElement
@@ -41,9 +41,13 @@ public class java_PartIII_ConditionStatment_IfElse {
 	}
 	
 	 }
-@Parameters("browser")
-@Test
+//@Parameters("browser")
+//@Test
 public void TC_03_If_Else_If_Else(String browserName) {
+	
+	// Có nhiều điều kiện
+	// Best Practice: Không nên If-else quá nhiều
+	
 	if (browserName.equalsIgnoreCase("chrome")) {
 		System.setProperty("webdriver.chrome.driver", projectPath + "\\browserDrivers\\chromedriver.exe");
 		driver = new ChromeDriver();
@@ -61,6 +65,36 @@ public void TC_03_If_Else_If_Else(String browserName) {
 	driver.quit();
  }
 
+@Test
+public void TC_04_If_Else_If_Else() {
+	// Page Object
+	// Dynamic Page
+	
+	String pageName = "Login";
+	if(pageName.equals("Login")) {
+		// LoginPage loginPage = new LoginPage();
+		// return loginPage;
+	}else if(pageName.equals("Register")) {
+		// RegisterPage registerPage = new RegisterPage();
+		// return registerPage;
+	}else if(pageName.equals("New Customer")) {
+		// CustomerPage customerPage = new CustomerPage();
+		// return customerPage;
+	}else {
+		// HomePage homepage = new HomePage();
+		// return homePage;
+	}
+	
+	// if- else tương đương biểu thức tam nguyên
+	int age =20;
+	String access=(age<18)?"You can not access" : "Welcome to our system!";
+	
+   if(age<18) {
+	   access = "You can not access";
+   }else {
+	   access ="Welcome to our system!";
+   }
+}
 }
 
  
