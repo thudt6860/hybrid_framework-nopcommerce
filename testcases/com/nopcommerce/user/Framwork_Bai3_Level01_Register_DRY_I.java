@@ -11,7 +11,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class Framwork_Bai3_Level01_Register_DRY {
+public class Framwork_Bai3_Level01_Register_DRY_I {
 	WebDriver driver;
 	String emailAddress;
 	String projectPath = System.getProperty("user.dir");

@@ -21,6 +21,11 @@ public class BasePage {
 	// class chỉ kế thừa 1 class, nhưng kế thưà được nhiều interface
 	// Chú ý: viết hàm sẽ không note comment nữa- ép mình chuẩn ngay từ đầu
 	// Các hàm tương tác với trình duyệt
+
+	public static BasePage getBasePageObject() {
+		return new BasePage();// khởi tạo class
+	}
+
 	public void openPageURL(WebDriver driver, String pageUrl) {
 		driver.get(pageUrl);
 	}
@@ -116,15 +121,15 @@ public class BasePage {
 	}
 
 	// Các hàm tương tác với Web Element
-	public By getByXpath(String xpathLocator) {
+	private By getByXpath(String xpathLocator) { // chỉ dùng trong class, không public ra ngoài
 		return By.xpath(xpathLocator);
 	}
 
-	public WebElement getWebElement(WebDriver driver, String xpathLocator) {
+	private WebElement getWebElement(WebDriver driver, String xpathLocator) {
 		return driver.findElement(getByXpath(xpathLocator));
 	}
 
-	public List<WebElement> getListWebElement(WebDriver driver, String xpathLocator) {
+	private List<WebElement> getListWebElement(WebDriver driver, String xpathLocator) {
 		return driver.findElements(getByXpath(xpathLocator));
 	}
 
@@ -332,6 +337,7 @@ public class BasePage {
 	}
 
 	public void waitForElementClickable(WebDriver driver, String xpathLocator) {
+		System.out.println("Driver at Wait for element clickable =  " + driver.toString());
 		WebDriverWait explicitWait = new WebDriverWait(driver, longTimeout);
 		explicitWait.until(ExpectedConditions.elementToBeClickable(getByXpath(xpathLocator)));
 	}
