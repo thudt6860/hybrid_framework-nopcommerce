@@ -9,7 +9,6 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.ie.InternetExplorerDriver;
-import org.openqa.selenium.opera.OperaDriver;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
@@ -55,8 +54,8 @@ public class BaseTest {
 			driverBaseTest = new InternetExplorerDriver();
 		} else if (browserName.equals("opera")) {
 
-			WebDriverManager.operadriver().setup();
-			driverBaseTest = new OperaDriver();
+			driverBaseTest = WebDriverManager.operadriver().create();
+			// driverBaseTest = new OperaDriver();
 
 		} else if (browserName.equals("coccoc")) {
 			// Coc coc browser trừ đi 7 version của chrome
@@ -76,7 +75,8 @@ public class BaseTest {
 			throw new RuntimeException("Browser name is invalid");
 		}
 		driverBaseTest.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-		driverBaseTest.get("https://demo.nopcommerce.com/");
+		// driverBaseTest.get("https://demo.nopcommerce.com/");
+		driverBaseTest.get("http://live.techpanda.org/index.php/");
 		return driverBaseTest;
 	}
 }

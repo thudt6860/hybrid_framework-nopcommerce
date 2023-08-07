@@ -40,7 +40,7 @@
    <test name="Run on opera">
   <parameter name ="browser" value ="chrome" />
     <classes>
-      <class name="com.nopcommerce.user.Framwork_Bai11_Page_Generator_Manager_III"/>
+      <class name="com.liveguru.user.Framwork_Bai11_Page_Generator_Manager_III"/>
     </classes>
   </test>
   

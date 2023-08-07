@@ -1,9 +1,9 @@
-package pageObjects;
+package pageObjects.nopCommerce;
 
 import org.openqa.selenium.WebDriver;
 
 import commons.BasePage;
-import pageUIs.RegisterPageUI;
+import pageUIs.nopCommerce.RegisterPageUI;
 
 public class RegisterPageObject extends BasePage {
 	private WebDriver driver;
@@ -82,9 +82,13 @@ public class RegisterPageObject extends BasePage {
 		return getElementText(driver, RegisterPageUI.REGISTER_SUCCESS_MESSAGE);
 	}
 
-	// public void clickToLogoutLink() {
+	// public HomePageObject clickToLogoutLink() {
 	// waitForElementClickable(driver, RegisterPageUI.LOGOUT_LINK);
 	// clickToElement(driver, RegisterPageUI.LOGOUT_LINK);
+	// // Cách 2: của PageGeneratorManager
+	// // return new HomePageObject(driver);
+	// // Cách 3:
+	// return PageGeneratorManager.getHomePage(driver);
 	//
 	// }
 

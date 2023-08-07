@@ -1,4 +1,4 @@
-package pageUIs;
+package pageUIs.nopCommerce;
 
 public class HomePageUI {
 	// REGISTER_LINK được in đậm nên là 1 hằng số khi dc khai báo static final

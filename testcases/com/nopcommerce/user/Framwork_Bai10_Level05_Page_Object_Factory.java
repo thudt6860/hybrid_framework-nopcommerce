@@ -1,35 +1,31 @@
 package com.nopcommerce.user;
 
 import java.util.Random;
-import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
+import commons.BaseTest;
 import pageObjects.nopCommerce.HomePageObject;
 import pageObjects.nopCommerce.LoginPageObject;
 import pageObjects.nopCommerce.RegisterPageObject;
 
-public class Framwork_Bai5_Level03_Page_Object_02_Login {
+public class Framwork_Bai10_Level05_Page_Object_Factory extends BaseTest {
 	// Khai báo
 	private WebDriver driver;
 	private String firstName, lastName, invalidEmail, notFoundEmail, existingEmail, validPassword, incorrectPassword;
 	private HomePageObject homePage;
 	private RegisterPageObject registerPage;
 	private LoginPageObject loginPage;
-	private String projectPath = System.getProperty("user.dir");
 
+	@Parameters("browser") // đang đặt hàm có biến là browser
 	@BeforeClass // Multiple browser
-	public void beforeClass() {
-		System.setProperty("webdriver.chrome.driver", projectPath + "\\browserDrivers\\chromedriver.exe");
-		driver = new ChromeDriver();
-		// System.out.println("Driver at Class test= " + driver.toString()); // In ra log trình duyệt xem biến driver lấy ra giữa các page ntn
-		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-		driver.get("https://demo.nopcommerce.com/");
+	public void beforeClass(String browserName) {
+		driver = getBrowserDriver(browserName);
 		homePage = new HomePageObject(driver);
 
 		firstName = "Thu";
@@ -42,7 +38,6 @@ public class Framwork_Bai5_Level03_Page_Object_02_Login {
 		System.out.println("Precondition - step 01:  Click to Register link");
 		homePage.clickToRegisterLink();
 
-		// Click Register link -> nhảy qua trang Register
 		registerPage = new RegisterPageObject(driver);
 		System.out.println("Precondition- step02: Input to required fields ");
 		registerPage.inputToFirstnameTextbox(firstName);
@@ -64,7 +59,6 @@ public class Framwork_Bai5_Level03_Page_Object_02_Login {
 	public void Login_01_Empty_Data() {
 		homePage.clickToLoginLink();
 
-		// Từ trang Home- Click Login Link => chuyển qua trang Login
 		loginPage = new LoginPageObject(driver);
 		loginPage.clickToLoginButton();
 
@@ -75,7 +69,7 @@ public class Framwork_Bai5_Level03_Page_Object_02_Login {
 	@Test
 	public void Login_02_Invalid_Email() {
 		homePage.clickToLoginLink();
-		// Từ trang Home- Click Login link => Chuyển qua trang Login
+
 		loginPage = new LoginPageObject(driver);
 		loginPage.inputToEmailTextbox(invalidEmail);
 		loginPage.clickToLoginButton();
