@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 import commons.BaseTest;
 import pageObjects.nopCommerce.HomePageObject;
 import pageObjects.nopCommerce.LoginPageObject;
-import pageObjects.nopCommerce.MyAccountPageObject;
+import pageObjects.nopCommerce.CustomerInfoPageObject;
 import pageObjects.nopCommerce.PageGeneratorManager;
 import pageObjects.nopCommerce.RegisterPageObject;
 
@@ -23,7 +23,7 @@ public class Framwork_Bai11_Page_Generator_Manager_III extends BaseTest {
 	private HomePageObject homePage;
 	private RegisterPageObject registerPage;
 	private LoginPageObject loginPage;
-	private MyAccountPageObject myAccountPage;
+	private CustomerInfoPageObject myAccountPage;
 
 	@Parameters("browser") // đang đặt hàm có biến là browser
 	@BeforeClass // Multiple browser
@@ -120,7 +120,7 @@ public class Framwork_Bai11_Page_Generator_Manager_III extends BaseTest {
 		Assert.assertTrue(homePage.isMyAccountLinkDisplayed());
 		myAccountPage = homePage.clickToLinkMyAccountLink(); // khởi tạo myAccountPage mà chưa dùng tới biến nên đang bị warring ở biến
 		// myAccountPage sẽ thực hiện các verify tiếp
-		myAccountPage.checkNewLetter();
+		// myAccountPage.checkNewLetter();
 	}
 
 	@AfterClass // Custom close browser/ driver

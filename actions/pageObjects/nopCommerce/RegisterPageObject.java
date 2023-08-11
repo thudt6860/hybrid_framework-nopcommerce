@@ -82,15 +82,15 @@ public class RegisterPageObject extends BasePage {
 		return getElementText(driver, RegisterPageUI.REGISTER_SUCCESS_MESSAGE);
 	}
 
-	// public HomePageObject clickToLogoutLink() {
-	// waitForElementClickable(driver, RegisterPageUI.LOGOUT_LINK);
-	// clickToElement(driver, RegisterPageUI.LOGOUT_LINK);
-	// // Cách 2: của PageGeneratorManager
-	// // return new HomePageObject(driver);
-	// // Cách 3:
-	// return PageGeneratorManager.getHomePage(driver);
-	//
-	// }
+	public HomePageObject clickToLogoutLink() {
+		waitForElementClickable(driver, RegisterPageUI.LOGOUT_LINK);
+		clickToElement(driver, RegisterPageUI.LOGOUT_LINK);
+		// Cách 2: của PageGeneratorManager
+		// return new HomePageObject(driver);
+		// Cách 3:
+		return PageGeneratorManager.getHomePage(driver);
+
+	}
 
 	public String getErrorExistingEmailMessage() {
 		waitForElementVisible(driver, RegisterPageUI.EXISTING_EMAIL_ERROR_MESSAGE);

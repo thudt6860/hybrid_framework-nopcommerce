@@ -40,7 +40,7 @@
    <test name="Run on opera">
   <parameter name ="browser" value ="chrome" />
     <classes>
-      <class name="com.nopcommerce.user.Framwork_Bai11_Page_Generator_Manager_III"/>
+      <class name="com.nopcommerce.user.Framwork_Bai12_Level07_Switch_Page"/>
     </classes>
   </test>
   

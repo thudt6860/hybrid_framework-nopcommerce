@@ -42,7 +42,7 @@ public class HomePageObject extends BasePage {
 
 	}
 
-	public MyAccountPageObject clickToLinkMyAccountLink() {
+	public CustomerInfoPageObject clickToLinkMyAccountLink() {
 		waitForElementVisible(driver, HomePageUI.MY_ACCOUNT_LINK);
 		clickToElement(driver, HomePageUI.MY_ACCOUNT_LINK);
 		return PageGeneratorManager.getMyAccountPage(driver);
