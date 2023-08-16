@@ -10,23 +10,23 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import commons.BaseTest;
-import pageObjects.nopCommerce.HomePageObject;
-import pageObjects.nopCommerce.LoginPageObject;
-import pageObjects.nopCommerce.RegisterPageObject;
+import pageObjects.nopCommerce.user.UserHomePageObject;
+import pageObjects.nopCommerce.user.UserLoginPageObject;
+import pageObjects.nopCommerce.user.UserRegisterPageObject;
 
 public class Framwork_Bai10_Level05_Page_Object_Factory extends BaseTest {
 	// Khai báo
 	private WebDriver driver;
 	private String firstName, lastName, invalidEmail, notFoundEmail, existingEmail, validPassword, incorrectPassword;
-	private HomePageObject homePage;
-	private RegisterPageObject registerPage;
-	private LoginPageObject loginPage;
+	private UserHomePageObject homePage;
+	private UserRegisterPageObject registerPage;
+	private UserLoginPageObject loginPage;
 
 	@Parameters("browser") // đang đặt hàm có biến là browser
 	@BeforeClass // Multiple browser
 	public void beforeClass(String browserName) {
 		driver = getBrowserDriver(browserName);
-		homePage = new HomePageObject(driver);
+		homePage = new UserHomePageObject(driver);
 
 		firstName = "Thu";
 		lastName = "Duong";
@@ -38,7 +38,7 @@ public class Framwork_Bai10_Level05_Page_Object_Factory extends BaseTest {
 		System.out.println("Precondition - step 01:  Click to Register link");
 		homePage.clickToRegisterLink();
 
-		registerPage = new RegisterPageObject(driver);
+		registerPage = new UserRegisterPageObject(driver);
 		System.out.println("Precondition- step02: Input to required fields ");
 		registerPage.inputToFirstnameTextbox(firstName);
 		registerPage.inputToLastnameTextbox(lastName);
@@ -57,9 +57,9 @@ public class Framwork_Bai10_Level05_Page_Object_Factory extends BaseTest {
 
 	@Test
 	public void Login_01_Empty_Data() {
-		homePage.clickToLoginLink();
+		homePage.openLoginPage();
 
-		loginPage = new LoginPageObject(driver);
+		loginPage = new UserLoginPageObject(driver);
 		loginPage.clickToLoginButton();
 
 		Assert.assertEquals(loginPage.getErrorMessageAtEmailTextbox(), "Please enter your email");
@@ -68,9 +68,9 @@ public class Framwork_Bai10_Level05_Page_Object_Factory extends BaseTest {
 
 	@Test
 	public void Login_02_Invalid_Email() {
-		homePage.clickToLoginLink();
+		homePage.openLoginPage();
 
-		loginPage = new LoginPageObject(driver);
+		loginPage = new UserLoginPageObject(driver);
 		loginPage.inputToEmailTextbox(invalidEmail);
 		loginPage.clickToLoginButton();
 		Assert.assertEquals(loginPage.getErrorMessageAtEmailTextbox(), "Wrong email");
@@ -79,9 +79,9 @@ public class Framwork_Bai10_Level05_Page_Object_Factory extends BaseTest {
 
 	@Test
 	public void Login_03__Email_Not_Found() {
-		homePage.clickToLoginLink();
+		homePage.openLoginPage();
 		// Từ trang Home- Click Login link => Chuyển qua trang Login
-		loginPage = new LoginPageObject(driver);
+		loginPage = new UserLoginPageObject(driver);
 		loginPage.inputToEmailTextbox(notFoundEmail);
 		loginPage.clickToLoginButton();
 		Assert.assertEquals(loginPage.getErrorMessageUnsuccessfull(), "Login was unsuccessful. Please correct the errors and try again.\nNo customer account found");
@@ -89,9 +89,9 @@ public class Framwork_Bai10_Level05_Page_Object_Factory extends BaseTest {
 
 	@Test
 	public void Login_04__Existing_Email_Empty_Password() {
-		homePage.clickToLoginLink();
+		homePage.openLoginPage();
 		// Từ trang Home- Click Login link => Chuyển qua trang Login
-		loginPage = new LoginPageObject(driver);
+		loginPage = new UserLoginPageObject(driver);
 		loginPage.inputToEmailTextbox(existingEmail);
 		loginPage.inputToPasswordTextbox("");
 		loginPage.clickToLoginButton();
@@ -100,9 +100,9 @@ public class Framwork_Bai10_Level05_Page_Object_Factory extends BaseTest {
 
 	@Test
 	public void Login_05__Existing_Email_Incorrect_Password() {
-		homePage.clickToLoginLink();
+		homePage.openLoginPage();
 		// Từ trang Home- Click Login link => Chuyển qua trang Login
-		loginPage = new LoginPageObject(driver);
+		loginPage = new UserLoginPageObject(driver);
 		loginPage.inputToEmailTextbox(existingEmail);
 		loginPage.inputToPasswordTextbox(incorrectPassword);
 		loginPage.clickToLoginButton();
@@ -111,9 +111,9 @@ public class Framwork_Bai10_Level05_Page_Object_Factory extends BaseTest {
 
 	@Test
 	public void Login_06__Success() {
-		homePage.clickToLoginLink();
+		homePage.openLoginPage();
 		// Từ trang Home - click Login link => Chuyển qua trang Login
-		loginPage = new LoginPageObject(driver);
+		loginPage = new UserLoginPageObject(driver);
 		loginPage.inputToEmailTextbox(existingEmail);
 		loginPage.inputToPasswordTextbox(validPassword);
 		loginPage.clickToLoginButton();

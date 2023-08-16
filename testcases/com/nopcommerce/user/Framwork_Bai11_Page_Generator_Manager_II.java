@@ -10,17 +10,17 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import commons.BaseTest;
-import pageObjects.nopCommerce.HomePageObject;
-import pageObjects.nopCommerce.LoginPageObject;
-import pageObjects.nopCommerce.RegisterPageObject;
+import pageObjects.nopCommerce.user.UserHomePageObject;
+import pageObjects.nopCommerce.user.UserLoginPageObject;
+import pageObjects.nopCommerce.user.UserRegisterPageObject;
 
 public class Framwork_Bai11_Page_Generator_Manager_II extends BaseTest {
 	// Khai báo
 	private WebDriver driver;
 	private String firstName, lastName, invalidEmail, notFoundEmail, existingEmail, validPassword, incorrectPassword;
-	private HomePageObject homePage;
-	private RegisterPageObject registerPage;
-	private LoginPageObject loginPage;
+	private UserHomePageObject homePage;
+	private UserRegisterPageObject registerPage;
+	private UserLoginPageObject loginPage;
 
 	@Parameters("browser") // đang đặt hàm có biến là browser
 	@BeforeClass // Multiple browser
@@ -28,7 +28,7 @@ public class Framwork_Bai11_Page_Generator_Manager_II extends BaseTest {
 		driver = getBrowserDriver(browserName);
 
 		// 1
-		homePage = new HomePageObject(driver);
+		homePage = new UserHomePageObject(driver);
 
 		firstName = "Thu";
 		lastName = "Duong";
@@ -61,7 +61,7 @@ public class Framwork_Bai11_Page_Generator_Manager_II extends BaseTest {
 
 	@Test
 	public void Login_01_Empty_Data() {
-		loginPage = homePage.clickToLoginLink();
+		loginPage = homePage.openLoginPage();
 		loginPage.clickToLoginButton();
 
 		Assert.assertEquals(loginPage.getErrorMessageAtEmailTextbox(), "Please enter your email");
@@ -70,7 +70,7 @@ public class Framwork_Bai11_Page_Generator_Manager_II extends BaseTest {
 
 	@Test
 	public void Login_02_Invalid_Email() {
-		loginPage = homePage.clickToLoginLink();
+		loginPage = homePage.openLoginPage();
 
 		loginPage.inputToEmailTextbox(invalidEmail);
 		loginPage.clickToLoginButton();
@@ -80,7 +80,7 @@ public class Framwork_Bai11_Page_Generator_Manager_II extends BaseTest {
 
 	@Test
 	public void Login_03__Email_Not_Found() {
-		loginPage = homePage.clickToLoginLink();
+		loginPage = homePage.openLoginPage();
 
 		loginPage.inputToEmailTextbox(notFoundEmail);
 		loginPage.clickToLoginButton();
@@ -89,7 +89,7 @@ public class Framwork_Bai11_Page_Generator_Manager_II extends BaseTest {
 
 	@Test
 	public void Login_04__Existing_Email_Empty_Password() {
-		loginPage = homePage.clickToLoginLink();
+		loginPage = homePage.openLoginPage();
 
 		loginPage.inputToEmailTextbox(existingEmail);
 		loginPage.inputToPasswordTextbox("");
@@ -99,7 +99,7 @@ public class Framwork_Bai11_Page_Generator_Manager_II extends BaseTest {
 
 	@Test
 	public void Login_05__Existing_Email_Incorrect_Password() {
-		loginPage = homePage.clickToLoginLink();
+		loginPage = homePage.openLoginPage();
 
 		loginPage.inputToEmailTextbox(existingEmail);
 		loginPage.inputToPasswordTextbox(incorrectPassword);
@@ -109,7 +109,7 @@ public class Framwork_Bai11_Page_Generator_Manager_II extends BaseTest {
 
 	@Test
 	public void Login_06__Success() {
-		loginPage = homePage.clickToLoginLink();
+		loginPage = homePage.openLoginPage();
 
 		loginPage.inputToEmailTextbox(existingEmail);
 		loginPage.inputToPasswordTextbox(validPassword);

@@ -1,22 +1,23 @@
-package pageObjects.nopCommerce;
+package pageObjects.nopCommerce.user;
 
 import org.openqa.selenium.WebDriver;
 
 import commons.BasePage;
-import pageUIs.nopCommerce.HomePageUI;
+import commons.PageGeneratorManager;
+import pageUIs.nopCommerce.user.HomePageUI;
 
-public class HomePageObject extends BasePage {
+public class UserHomePageObject extends BasePage {
 	// HomePageUI homePageUI = new HomePageUI(); // nếu HomePageUI.java tương ứng có dùng static cho locator thì k cần khởi tạo ở đây
 	private WebDriver driver; // biến global
 
-	public HomePageObject(WebDriver driver) { // hàm khởi tạo không có kiểu dữ liệu trả về
+	public UserHomePageObject(WebDriver driver) { // hàm khởi tạo không có kiểu dữ liệu trả về
 
 		this.driver = driver; // dùng this lấy chính biến global,
 								// biến trong hàm bằng biến global; thực tế là biến global của Page_object là local cho HomePageObject
 		System.out.println("Driver at Home Page =  " + driver.toString());
 	}
 
-	public RegisterPageObject clickToRegisterLink() {
+	public UserRegisterPageObject clickToRegisterLink() {
 		// System.out.println(homePageUI.EMAIL_TEXTBOX) // dùng cho khởi tạo HomePageUI
 		// System.out.println(HomePageUI.REGISTER_LINK); // nếu dùng static thì chỉ việc gọi HomePageUI class luôn
 		waitForElementClickable(driver, HomePageUI.REGISTER_LINK);
@@ -24,15 +25,13 @@ public class HomePageObject extends BasePage {
 		// Cách 2:
 		// return new RegisterPageObject(driver);
 		// Cách 3:
-		return PageGeneratorManager.getRegisterPage(driver);
+		return PageGeneratorManager.getUserRegisterPage(driver);
 	}
 
-	public LoginPageObject clickToLoginLink() {
+	public UserLoginPageObject openLoginPage() {
 		waitForElementVisible(driver, HomePageUI.LOGIN_LINK);
 		clickToElement(driver, HomePageUI.LOGIN_LINK);
-		// Cách 2: PageGeneratorManager
-		// return new LoginPageObject(driver);
-		return PageGeneratorManager.getLoginPage(driver);
+		return PageGeneratorManager.getUserLoginPage(driver);
 
 	}
 
@@ -42,10 +41,10 @@ public class HomePageObject extends BasePage {
 
 	}
 
-	public CustomerInfoPageObject clickToLinkMyAccountLink() {
+	public UserCustomerInfoPageObject openMyAccountPage() {
 		waitForElementVisible(driver, HomePageUI.MY_ACCOUNT_LINK);
 		clickToElement(driver, HomePageUI.MY_ACCOUNT_LINK);
-		return PageGeneratorManager.getMyAccountPage(driver);
+		return PageGeneratorManager.getUserMyAccountPage(driver);
 
 	}
 

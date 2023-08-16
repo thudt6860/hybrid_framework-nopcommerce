@@ -10,17 +10,17 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import pageObjects.nopCommerce.HomePageObject;
-import pageObjects.nopCommerce.LoginPageObject;
-import pageObjects.nopCommerce.RegisterPageObject;
+import pageObjects.nopCommerce.user.UserHomePageObject;
+import pageObjects.nopCommerce.user.UserLoginPageObject;
+import pageObjects.nopCommerce.user.UserRegisterPageObject;
 
 public class Framwork_Bai5_Level03_Page_Object_02_Login {
 	// Khai báo
 	private WebDriver driver;
 	private String firstName, lastName, invalidEmail, notFoundEmail, existingEmail, validPassword, incorrectPassword;
-	private HomePageObject homePage;
-	private RegisterPageObject registerPage;
-	private LoginPageObject loginPage;
+	private UserHomePageObject homePage;
+	private UserRegisterPageObject registerPage;
+	private UserLoginPageObject loginPage;
 	private String projectPath = System.getProperty("user.dir");
 
 	@BeforeClass // Multiple browser
@@ -30,7 +30,7 @@ public class Framwork_Bai5_Level03_Page_Object_02_Login {
 		// System.out.println("Driver at Class test= " + driver.toString()); // In ra log trình duyệt xem biến driver lấy ra giữa các page ntn
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 		driver.get("https://demo.nopcommerce.com/");
-		homePage = new HomePageObject(driver);
+		homePage = new UserHomePageObject(driver);
 
 		firstName = "Thu";
 		lastName = "Duong";
@@ -43,7 +43,7 @@ public class Framwork_Bai5_Level03_Page_Object_02_Login {
 		homePage.clickToRegisterLink();
 
 		// Click Register link -> nhảy qua trang Register
-		registerPage = new RegisterPageObject(driver);
+		registerPage = new UserRegisterPageObject(driver);
 		System.out.println("Precondition- step02: Input to required fields ");
 		registerPage.inputToFirstnameTextbox(firstName);
 		registerPage.inputToLastnameTextbox(lastName);
@@ -62,10 +62,10 @@ public class Framwork_Bai5_Level03_Page_Object_02_Login {
 
 	@Test
 	public void Login_01_Empty_Data() {
-		homePage.clickToLoginLink();
+		homePage.openLoginPage();
 
 		// Từ trang Home- Click Login Link => chuyển qua trang Login
-		loginPage = new LoginPageObject(driver);
+		loginPage = new UserLoginPageObject(driver);
 		loginPage.clickToLoginButton();
 
 		Assert.assertEquals(loginPage.getErrorMessageAtEmailTextbox(), "Please enter your email");
@@ -74,9 +74,9 @@ public class Framwork_Bai5_Level03_Page_Object_02_Login {
 
 	@Test
 	public void Login_02_Invalid_Email() {
-		homePage.clickToLoginLink();
+		homePage.openLoginPage();
 		// Từ trang Home- Click Login link => Chuyển qua trang Login
-		loginPage = new LoginPageObject(driver);
+		loginPage = new UserLoginPageObject(driver);
 		loginPage.inputToEmailTextbox(invalidEmail);
 		loginPage.clickToLoginButton();
 		Assert.assertEquals(loginPage.getErrorMessageAtEmailTextbox(), "Wrong email");
@@ -85,9 +85,9 @@ public class Framwork_Bai5_Level03_Page_Object_02_Login {
 
 	@Test
 	public void Login_03__Email_Not_Found() {
-		homePage.clickToLoginLink();
+		homePage.openLoginPage();
 		// Từ trang Home- Click Login link => Chuyển qua trang Login
-		loginPage = new LoginPageObject(driver);
+		loginPage = new UserLoginPageObject(driver);
 		loginPage.inputToEmailTextbox(notFoundEmail);
 		loginPage.clickToLoginButton();
 		Assert.assertEquals(loginPage.getErrorMessageUnsuccessfull(), "Login was unsuccessful. Please correct the errors and try again.\nNo customer account found");
@@ -95,9 +95,9 @@ public class Framwork_Bai5_Level03_Page_Object_02_Login {
 
 	@Test
 	public void Login_04__Existing_Email_Empty_Password() {
-		homePage.clickToLoginLink();
+		homePage.openLoginPage();
 		// Từ trang Home- Click Login link => Chuyển qua trang Login
-		loginPage = new LoginPageObject(driver);
+		loginPage = new UserLoginPageObject(driver);
 		loginPage.inputToEmailTextbox(existingEmail);
 		loginPage.inputToPasswordTextbox("");
 		loginPage.clickToLoginButton();
@@ -106,9 +106,9 @@ public class Framwork_Bai5_Level03_Page_Object_02_Login {
 
 	@Test
 	public void Login_05__Existing_Email_Incorrect_Password() {
-		homePage.clickToLoginLink();
+		homePage.openLoginPage();
 		// Từ trang Home- Click Login link => Chuyển qua trang Login
-		loginPage = new LoginPageObject(driver);
+		loginPage = new UserLoginPageObject(driver);
 		loginPage.inputToEmailTextbox(existingEmail);
 		loginPage.inputToPasswordTextbox(incorrectPassword);
 		loginPage.clickToLoginButton();
@@ -117,9 +117,9 @@ public class Framwork_Bai5_Level03_Page_Object_02_Login {
 
 	@Test
 	public void Login_06__Success() {
-		homePage.clickToLoginLink();
+		homePage.openLoginPage();
 		// Từ trang Home - click Login link => Chuyển qua trang Login
-		loginPage = new LoginPageObject(driver);
+		loginPage = new UserLoginPageObject(driver);
 		loginPage.inputToEmailTextbox(existingEmail);
 		loginPage.inputToPasswordTextbox(validPassword);
 		loginPage.clickToLoginButton();
