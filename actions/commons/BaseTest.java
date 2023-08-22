@@ -15,6 +15,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 public class BaseTest {
 	private WebDriver driverBaseTest;
 	private String projectPath = System.getProperty("user.dir");
+	private WebDriver driveBaseTest;
 
 	protected WebDriver getBrowserDriver(String browserName) {
 		if (browserName.equals("chrome")) {
@@ -62,7 +63,13 @@ public class BaseTest {
 			// System.setProperty("webdriver.chrome.driver", projectPath + "\\browserDrivers\\chromedriver113.exe");
 			WebDriverManager.chromedriver().driverVersion("113.0.5672.63").setup();
 			ChromeOptions options = new ChromeOptions();
-			options.setBinary("C:\\Program Files\\CocCoc\\Browser\\Application\\browser.exe");
+
+			if (GlobalConstants.OS_NAME.startsWith("windows")) {
+				options.setBinary("C:\\Program Files\\CocCoc\\Browser\\Application\\browser.exe");
+			} else {
+				options.setBinary("....");
+			}
+
 			driverBaseTest = new ChromeDriver(options);
 		} else if (browserName.equals("brave")) {
 			// Brave browser version nào dùng chromedriver version đó
@@ -74,9 +81,73 @@ public class BaseTest {
 		} else {
 			throw new RuntimeException("Browser name is invalid");
 		}
-		driverBaseTest.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		driverBaseTest.manage().timeouts().implicitlyWait(GlobalConstants.LONG_TIMEOUT, TimeUnit.SECONDS);
 		// driverBaseTest.get("https://demo.nopcommerce.com/");
 		driverBaseTest.get(GlobalConstants.FRONTEND_PAGE_URL);
 		return driverBaseTest;
 	}
+
+	protected WebDriver getBrowserDriver(String browserName, String appUrl) {
+		if (browserName.equals("chrome")) {
+			WebDriverManager.chromedriver().setup();
+			driverBaseTest = new ChromeDriver();
+		} else if (browserName.equals("h_chrome")) {
+			WebDriverManager.chromedriver().setup();
+			ChromeOptions options = new ChromeOptions();
+			options.addArguments("--headless");
+			options.addArguments("window-size=1920x1080");
+			driverBaseTest = new ChromeDriver(options);
+		} else if (browserName.equals("firefox")) {
+			WebDriverManager.firefoxdriver().setup();
+			driverBaseTest = new FirefoxDriver();
+		} else if (browserName.equals("h_firefox")) {
+			WebDriverManager.firefoxdriver().setup();
+			FirefoxOptions options = new FirefoxOptions();
+			options.addArguments("--headless");
+			options.addArguments("window-size=1920x1080");
+			driverBaseTest = new FirefoxDriver(options);
+		} else if (browserName.equals("edge")) {
+			WebDriverManager.edgedriver().setup();
+			driverBaseTest = new EdgeDriver();
+		} else if (browserName.equals("ie")) {
+
+			WebDriverManager.iedriver().arch32().setup(); // IE luôn dùng bản 32bit
+			driverBaseTest = new InternetExplorerDriver();
+		} else if (browserName.equals("opera")) {
+
+			driverBaseTest = WebDriverManager.operadriver().create();
+			// driverBaseTest = new OperaDriver();
+
+		} else if (browserName.equals("coccoc")) {
+
+			WebDriverManager.chromedriver().driverVersion("113.0.5672.63").setup(); // webdriver manager để tự tải driver trình duyệt
+			ChromeOptions options = new ChromeOptions();
+			options.setBinary("C:\\Program Files\\CocCoc\\Browser\\Application\\browser.exe");
+			driverBaseTest = new ChromeDriver(options);
+		} else if (browserName.equals("brave")) {
+
+			WebDriverManager.chromedriver().driverVersion("115.0.5790.111").setup();
+			ChromeOptions options = new ChromeOptions();
+			options.setBinary("C:\\Program Files\\BraveSoftware\\Brave-Browser\\Application\\brave.exe");
+			driverBaseTest = new ChromeDriver(options);
+		} else {
+			throw new RuntimeException("Browser name is invalid");
+		}
+		driverBaseTest.manage().timeouts().implicitlyWait(GlobalConstants.LONG_TIMEOUT, TimeUnit.SECONDS);
+
+		driverBaseTest.get(appUrl);
+		return driverBaseTest;
+	}
+
+	// private String getEnvironmentUrl(String serverName) {
+	// String envUrl = null;
+	// EnvironmentList environment = EnvironmentList.valueOf(serverName.toUpperCase());
+	// if (environment == EnvironmentList.DEV) {
+	// envUrl = "https://dev-demo.nopcommerce.com/";
+	// } else if (environment == EnvironmentList.TESTING) {
+	// envUrl = "https://test-demo.nopcommerce.com/";
+	// } else if (environment == EnvironmentList.STAGING)
+	// return envUrl;
+	//
+	// }
 }
