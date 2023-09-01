@@ -11,8 +11,8 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import commons.BaseTest;
-import pageObjects.jQuery.HomePageObject;
-import pageObjects.jQuery.PageGeneratorManager;
+import pageObjects.jQuery.dataTable.HomePageObject;
+import pageObjects.jQuery.dataTable.PageGeneratorManager;
 
 public class Framwork_Bai18_Level10_Handle_DataTable_DataGrid_I extends BaseTest {
 	// Khai báo

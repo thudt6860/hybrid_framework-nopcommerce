@@ -9,13 +9,14 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.testng.Assert;
+import org.testng.Reporter;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class BaseTest {
 	private WebDriver driverBaseTest;
 	private String projectPath = System.getProperty("user.dir");
-	private WebDriver driveBaseTest;
 
 	protected WebDriver getBrowserDriver(String browserName) {
 		if (browserName.equals("chrome")) {
@@ -137,6 +138,52 @@ public class BaseTest {
 
 		driverBaseTest.get(appUrl);
 		return driverBaseTest;
+	}
+
+	protected boolean verifyTrue(boolean condition) {
+		boolean pass = true;
+		try {
+			Assert.assertTrue(condition);
+			System.out.println(" -------------------------- PASSED -------------------------- ");
+
+		} catch (Throwable e) {// nếu dùng exception thì chỉ show dc 1 lỗi, dùng throwable show được all lỗi
+			System.out.println(" -------------------------- FAILED -------------------------- ");
+			pass = false;
+
+			// Add lỗi vào ReportNG
+			VerificationFailures.getFailures().addFailureForTest(Reporter.getCurrentTestResult(), e);
+			Reporter.getCurrentTestResult().setThrowable(e);
+		}
+		return pass;
+	}
+
+	protected boolean verifyFalse(boolean condition) {
+		boolean pass = true;
+		try {
+			Assert.assertFalse(condition);
+			System.out.println(" -------------------------- PASSED -------------------------- ");
+
+		} catch (Throwable e) {
+			System.out.println(" -------------------------- FAILED -------------------------- ");
+			pass = false;
+			VerificationFailures.getFailures().addFailureForTest(Reporter.getCurrentTestResult(), e);
+			Reporter.getCurrentTestResult().setThrowable(e);
+		}
+		return pass;
+	}
+
+	protected boolean verifyEquals(Object actual, Object expected) {
+		boolean pass = true;
+		try {
+			Assert.assertEquals(actual, expected);
+			System.out.println(" -------------------------- PASSED -------------------------- ");
+		} catch (Throwable e) {
+			pass = false;
+			System.out.println(" -------------------------- FAILED -------------------------- ");
+			VerificationFailures.getFailures().addFailureForTest(Reporter.getCurrentTestResult(), e);
+			Reporter.getCurrentTestResult().setThrowable(e);
+		}
+		return pass;
 	}
 
 	// private String getEnvironmentUrl(String serverName) {

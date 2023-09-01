@@ -2,11 +2,13 @@ package commons;
 
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -22,7 +24,8 @@ import pageObjects.nopCommerce.user.UserCustomerInfoPageObject;
 import pageObjects.nopCommerce.user.UserHomePageObject;
 import pageObjects.nopCommerce.user.UserMyProductReviewPageObject;
 import pageObjects.nopCommerce.user.UserRewardPointPageObject;
-import pageUIs.nopCommerce.user.BasePageUI;
+import pageUIs.jQuery.uploadFile.BasePageJqueryUI;
+import pageUIs.nopCommerce.user.BasePageNopCommerceUI;
 
 public class BasePage {
 	// class BasePage kế thừa class Page và interface IPage (có thể kế thừa nhiều Interface) dùng từ khóa extend cú pháp: public class BasePage extends Page
@@ -300,11 +303,35 @@ public class BasePage {
 	}
 
 	public boolean isElementDisplayed(WebDriver driver, String locatorType) {
-		return getWebElement(driver, locatorType).isDisplayed();
+		try {
+			return getWebElement(driver, locatorType).isDisplayed();
+		} catch (NoSuchElementException e) {
+			return false;
+		}
 	}
 
 	public boolean isElementDisplayed(WebDriver driver, String locatorType, String... dynamicValues) {
 		return getWebElement(driver, getDynamicXpath(locatorType, dynamicValues)).isDisplayed();
+	}
+
+	public boolean isElementUndisplayed(WebDriver driver, String locator) {
+		overrideImplicitTimeout(driver, shortTimeout);
+		List<WebElement> elements = getListWebElement(driver, locator);
+
+		overrideImplicitTimeout(driver, longTimeout);
+
+		if (elements.size() == 0) {
+			return true;
+
+		} else if (elements.size() > 0 && !elements.get(0).isDisplayed()) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public void overrideImplicitTimeout(WebDriver driver, long timeOut) {
+		driver.manage().timeouts().implicitlyWait(timeOut, TimeUnit.SECONDS);
 	}
 
 	public boolean isElementEnabled(WebDriver driver, String locatorType) {
@@ -397,6 +424,13 @@ public class BasePage {
 		return (String) jsExecutor.executeScript("return arguments[0].validationMessage;", getWebElement(driver, locatorType));
 	}
 
+	public boolean isImageLoaded(WebDriver driver, String locatorType, String... dynamicValues) {
+		JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+		boolean status = (boolean) jsExecutor.executeScript("return arguments[0].complete && typeof arguments[0].naturalWidth != \"undefined\" && arguments[0].naturalWidth > 0",
+				getWebElement(driver, getDynamicXpath(locatorType, dynamicValues)));
+		return status;
+	}
+
 	public boolean isImageLoaded(WebDriver driver, String locatorType) {
 		JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
 		boolean status = (boolean) jsExecutor.executeScript("return arguments[0].complete && typeof arguments[0].naturalWidth != \"undefined\" && arguments[0].naturalWidth > 0", getWebElement(driver, locatorType));
@@ -432,6 +466,16 @@ public class BasePage {
 		explicitWait.until(ExpectedConditions.invisibilityOfElementLocated(getByLocator(locatorType)));
 	}
 
+	/*
+	 * Wait for element undisplayed in DOM or not in DOM and override implicit timeout
+	 */
+	public void waitForElementUndisplayed(WebDriver driver, String locatorType) {
+		WebDriverWait explicitWait = new WebDriverWait(driver, shortTimeout);
+		overrideImplicitTimeout(driver, shortTimeout);
+		explicitWait.until(ExpectedConditions.invisibilityOfElementLocated(getByLocator(locatorType)));
+		overrideImplicitTimeout(driver, longTimeout);
+	}
+
 	public void waitForElementInVisible(WebDriver driver, String locatorType, String... dynamicValues) {
 		WebDriverWait explicitWait = new WebDriverWait(driver, longTimeout);
 		explicitWait.until(ExpectedConditions.invisibilityOfElementLocated(getByLocator(getDynamicXpath(locatorType, dynamicValues))));
@@ -450,7 +494,7 @@ public class BasePage {
 	}
 
 	public void waitForElementClickable(WebDriver driver, String locatorType) {
-		System.out.println("Driver at Wait for element clickable =  " + driver.toString());
+		System.out.println("Driver at Wait for element clickable = " + driver.toString());
 		WebDriverWait explicitWait = new WebDriverWait(driver, longTimeout);
 		explicitWait.until(ExpectedConditions.elementToBeClickable(getByLocator(locatorType)));
 	}
@@ -461,36 +505,52 @@ public class BasePage {
 		explicitWait.until(ExpectedConditions.elementToBeClickable(getByLocator(getDynamicXpath(locatorType, dynamicValues))));
 	}
 
+	public void uploadMultipleFiles(WebDriver driver, String... fileNames) {
+		// Đường dẫn của thư mục uploadFiles: chạy cho cả Window, Mac, Linux
+		String filePath = GlobalConstants.UPLOAD_FILE;
+
+		// Đường dẫn của tất cả file
+		// 1 file: anh.jpg
+		// nhiều file: String[] fileNames = {"anh.jpg", "Bong.jpg", ""course.jpg};
+		String fullFileName = "";
+		for (String file : fileNames) {
+			// "" + D:\Fullstack_Selenium_Java\03-Java Hybrid Framword/uploadFiles\ + anh.jpg + "\n"';
+			fullFileName = fullFileName + filePath + file + "\n";
+		}
+		fullFileName = fullFileName.trim();
+		getWebElement(driver, BasePageJqueryUI.UPLOAD_FILE).sendKeys(fullFileName);
+	}
+
 	// Tối ưu ở bài học Level07_Switch_Page
 	public UserCustomerInfoPageObject openCustomerInfoPage(WebDriver driver) {
-		waitForElementVisible(driver, BasePageUI.CUSTOMER_INFO_LINK);
-		clickToElement(driver, BasePageUI.CUSTOMER_INFO_LINK);
+		waitForElementVisible(driver, BasePageNopCommerceUI.CUSTOMER_INFO_LINK);
+		clickToElement(driver, BasePageNopCommerceUI.CUSTOMER_INFO_LINK);
 		return PageGeneratorManager.getUserCustomerInfoPage(driver);
 	}
 
 	public UserAddressPageObject openAddressPage(WebDriver driver) {
-		waitForElementVisible(driver, BasePageUI.ADDRESS_LINK);
-		clickToElement(driver, BasePageUI.ADDRESS_LINK);
+		waitForElementVisible(driver, BasePageNopCommerceUI.ADDRESS_LINK);
+		clickToElement(driver, BasePageNopCommerceUI.ADDRESS_LINK);
 		return PageGeneratorManager.getUserAddressPage(driver);
 	}
 
 	public UserMyProductReviewPageObject openMyProductReviewPage(WebDriver driver) {
-		waitForElementVisible(driver, BasePageUI.MY_PRODUCT_REVIEW_LINK);
-		clickToElement(driver, BasePageUI.MY_PRODUCT_REVIEW_LINK);
+		waitForElementVisible(driver, BasePageNopCommerceUI.MY_PRODUCT_REVIEW_LINK);
+		clickToElement(driver, BasePageNopCommerceUI.MY_PRODUCT_REVIEW_LINK);
 		return PageGeneratorManager.getUserMyProductReviewPage(driver);
 	}
 
 	public UserRewardPointPageObject openRewardPointPage(WebDriver driver) {
-		waitForElementVisible(driver, BasePageUI.REWARD_POINT_LINK);
-		clickToElement(driver, BasePageUI.REWARD_POINT_LINK);
+		waitForElementVisible(driver, BasePageNopCommerceUI.REWARD_POINT_LINK);
+		clickToElement(driver, BasePageNopCommerceUI.REWARD_POINT_LINK);
 		return PageGeneratorManager.getUserRewardPointPage(driver);
 	}
 
 	// Tối ưu ở bài học Dynamic XPath: Level09_Dynamic_Locator
 
 	public BasePage openPagesAtMyAccountByName(WebDriver driver, String pageName) {
-		waitForElementClickable(driver, BasePageUI.DYNAMIC_PAGE_AT_MY_ACCOUNT_PAGE, pageName);
-		clickToElement(driver, BasePageUI.DYNAMIC_PAGE_AT_MY_ACCOUNT_PAGE, pageName);
+		waitForElementClickable(driver, BasePageNopCommerceUI.DYNAMIC_PAGE_AT_MY_ACCOUNT_PAGE, pageName);
+		clickToElement(driver, BasePageNopCommerceUI.DYNAMIC_PAGE_AT_MY_ACCOUNT_PAGE, pageName);
 		switch (pageName) {
 		case "Addresses":
 			return PageGeneratorManager.getUserAddressPage(driver);
@@ -509,16 +569,17 @@ public class BasePage {
 
 	// Bài switch Role
 	public UserHomePageObject clickToLogoutLinkAtUserPage(WebDriver driver) {
-		waitForElementVisible(driver, BasePageUI.LOGOUT_LINK_AT_USER);
-		clickToElement(driver, BasePageUI.LOGOUT_LINK_AT_USER);
+		waitForElementVisible(driver, BasePageNopCommerceUI.LOGOUT_LINK_AT_USER);
+		clickToElement(driver, BasePageNopCommerceUI.LOGOUT_LINK_AT_USER);
 		return PageGeneratorManager.getUserHomePage(driver);
 	}
 
 	public AdminLoginPageObject clickToLogoutLinkAtAdminPage(WebDriver driver) {
-		waitForElementVisible(driver, BasePageUI.LOGOUT_LINK_AT_ADMIN);
-		clickToElement(driver, BasePageUI.LOGOUT_LINK_AT_ADMIN);
+		waitForElementVisible(driver, BasePageNopCommerceUI.LOGOUT_LINK_AT_ADMIN);
+		clickToElement(driver, BasePageNopCommerceUI.LOGOUT_LINK_AT_ADMIN);
 		return PageGeneratorManager.getAdminLoginPage(driver);
 	}
 
-	private long longTimeout = GlobalConstants.LONG_TIMEOUT; // private vì duy nhất trong class này dùng thôi
+	private long longTimeout = GlobalConstants.LONG_TIMEOUT;
+	private long shortTimeout = GlobalConstants.SHORT_TIMEOUT;
 }
