@@ -2,6 +2,8 @@ package commons;
 
 import java.util.concurrent.TimeUnit;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -15,14 +17,19 @@ import org.testng.Reporter;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class BaseTest {
-	private WebDriver driverBaseTest;
-	private String projectPath = System.getProperty("user.dir");
+	private WebDriver driver;
+	// private String projectPath = System.getProperty("user.dir");
+	protected final Log log; // protected chỉ thằng nào thừa kế BaseTest mới dùng được biến này
+
+	protected BaseTest() { // hàm constructor
+		log = LogFactory.getLog(getClass());
+	}
 
 	protected WebDriver getBrowserDriver(String browserName) {
 		if (browserName.equals("chrome")) {
 			// System.setProperty("webdriver.chrome.driver", projectPath + "\\browserDrivers\\chromedriver.exe");
 			WebDriverManager.chromedriver().setup();
-			driverBaseTest = new ChromeDriver();
+			driver = new ChromeDriver();
 		} else if (browserName.equals("h_chrome")) {
 			// System.setProperty("webdriver.chrome.driver", projectPath + "\\browserDrivers\\chromedriver.exe");
 			WebDriverManager.chromedriver().setup();
@@ -30,11 +37,11 @@ public class BaseTest {
 			ChromeOptions options = new ChromeOptions();
 			options.addArguments("--headless");
 			options.addArguments("window-size=1920x1080");
-			driverBaseTest = new ChromeDriver(options);
+			driver = new ChromeDriver(options);
 		} else if (browserName.equals("firefox")) {
 			// System.setProperty("webdriver.gecko.driver", projectPath + "\\browserDrivers\\geckodriver.exe");
 			WebDriverManager.firefoxdriver().setup();
-			driverBaseTest = new FirefoxDriver();
+			driver = new FirefoxDriver();
 
 		} else if (browserName.equals("h_firefox")) {
 			// System.setProperty("webdriver.gecko.driver", projectPath + "\\browserDrivers\\geckodriver.exe");
@@ -44,19 +51,19 @@ public class BaseTest {
 			options.addArguments("--headless");
 			options.addArguments("window-size=1920x1080");
 
-			driverBaseTest = new FirefoxDriver(options);
+			driver = new FirefoxDriver(options);
 
 		} else if (browserName.equals("edge")) {
 			// System.setProperty("webdriver.edge.driver", projectPath + "\\browserDrivers\\msedgedriver.exe");
 			WebDriverManager.edgedriver().setup();
-			driverBaseTest = new EdgeDriver();
+			driver = new EdgeDriver();
 		} else if (browserName.equals("ie")) {
 			// System.setProperty("webdriver.edge.driver", projectPath + "\\browserDrivers\\msedgedriver.exe");
 			WebDriverManager.iedriver().arch32().setup(); // IE luôn dùng bản 32bit
-			driverBaseTest = new InternetExplorerDriver();
+			driver = new InternetExplorerDriver();
 		} else if (browserName.equals("opera")) {
 
-			driverBaseTest = WebDriverManager.operadriver().create();
+			driver = WebDriverManager.operadriver().create();
 			// driverBaseTest = new OperaDriver();
 
 		} else if (browserName.equals("coccoc")) {
@@ -71,52 +78,52 @@ public class BaseTest {
 				options.setBinary("....");
 			}
 
-			driverBaseTest = new ChromeDriver(options);
+			driver = new ChromeDriver(options);
 		} else if (browserName.equals("brave")) {
 			// Brave browser version nào dùng chromedriver version đó
 			// System.setProperty("webdriver.chrome.driver", projectPath + "\\browserDrivers\\chromedriver.exe"); => k cần nữa thay bằng câu WebDriverManager rồi
 			WebDriverManager.chromedriver().driverVersion("115.0.5790.111").setup();
 			ChromeOptions options = new ChromeOptions();
 			options.setBinary("C:\\Program Files\\BraveSoftware\\Brave-Browser\\Application\\brave.exe");
-			driverBaseTest = new ChromeDriver(options);
+			driver = new ChromeDriver(options);
 		} else {
 			throw new RuntimeException("Browser name is invalid");
 		}
-		driverBaseTest.manage().timeouts().implicitlyWait(GlobalConstants.LONG_TIMEOUT, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(GlobalConstants.LONG_TIMEOUT, TimeUnit.SECONDS);
 		// driverBaseTest.get("https://demo.nopcommerce.com/");
-		driverBaseTest.get(GlobalConstants.FRONTEND_PAGE_URL);
-		return driverBaseTest;
+		driver.get(GlobalConstants.FRONTEND_PAGE_URL);
+		return driver;
 	}
 
 	protected WebDriver getBrowserDriver(String browserName, String appUrl) {
 		if (browserName.equals("chrome")) {
 			WebDriverManager.chromedriver().setup();
-			driverBaseTest = new ChromeDriver();
+			driver = new ChromeDriver();
 		} else if (browserName.equals("h_chrome")) {
 			WebDriverManager.chromedriver().setup();
 			ChromeOptions options = new ChromeOptions();
 			options.addArguments("--headless");
 			options.addArguments("window-size=1920x1080");
-			driverBaseTest = new ChromeDriver(options);
+			driver = new ChromeDriver(options);
 		} else if (browserName.equals("firefox")) {
 			WebDriverManager.firefoxdriver().setup();
-			driverBaseTest = new FirefoxDriver();
+			driver = new FirefoxDriver();
 		} else if (browserName.equals("h_firefox")) {
 			WebDriverManager.firefoxdriver().setup();
 			FirefoxOptions options = new FirefoxOptions();
 			options.addArguments("--headless");
 			options.addArguments("window-size=1920x1080");
-			driverBaseTest = new FirefoxDriver(options);
+			driver = new FirefoxDriver(options);
 		} else if (browserName.equals("edge")) {
 			WebDriverManager.edgedriver().setup();
-			driverBaseTest = new EdgeDriver();
+			driver = new EdgeDriver();
 		} else if (browserName.equals("ie")) {
 
 			WebDriverManager.iedriver().arch32().setup(); // IE luôn dùng bản 32bit
-			driverBaseTest = new InternetExplorerDriver();
+			driver = new InternetExplorerDriver();
 		} else if (browserName.equals("opera")) {
 
-			driverBaseTest = WebDriverManager.operadriver().create();
+			driver = WebDriverManager.operadriver().create();
 			// driverBaseTest = new OperaDriver();
 
 		} else if (browserName.equals("coccoc")) {
@@ -124,30 +131,30 @@ public class BaseTest {
 			WebDriverManager.chromedriver().driverVersion("113.0.5672.63").setup(); // webdriver manager để tự tải driver trình duyệt
 			ChromeOptions options = new ChromeOptions();
 			options.setBinary("C:\\Program Files\\CocCoc\\Browser\\Application\\browser.exe");
-			driverBaseTest = new ChromeDriver(options);
+			driver = new ChromeDriver(options);
 		} else if (browserName.equals("brave")) {
 
 			WebDriverManager.chromedriver().driverVersion("115.0.5790.111").setup();
 			ChromeOptions options = new ChromeOptions();
 			options.setBinary("C:\\Program Files\\BraveSoftware\\Brave-Browser\\Application\\brave.exe");
-			driverBaseTest = new ChromeDriver(options);
+			driver = new ChromeDriver(options);
 		} else {
 			throw new RuntimeException("Browser name is invalid");
 		}
-		driverBaseTest.manage().timeouts().implicitlyWait(GlobalConstants.LONG_TIMEOUT, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(GlobalConstants.LONG_TIMEOUT, TimeUnit.SECONDS);
 
-		driverBaseTest.get(appUrl);
-		return driverBaseTest;
+		driver.get(appUrl);
+		return driver;
 	}
 
 	protected boolean verifyTrue(boolean condition) {
 		boolean pass = true;
 		try {
 			Assert.assertTrue(condition);
-			System.out.println(" -------------------------- PASSED -------------------------- ");
+			log.info(" -------------------------- PASSED -------------------------- ");
 
 		} catch (Throwable e) {// nếu dùng exception thì chỉ show dc 1 lỗi, dùng throwable show được all lỗi
-			System.out.println(" -------------------------- FAILED -------------------------- ");
+			log.info(" -------------------------- FAILED -------------------------- ");
 			pass = false;
 
 			// Add lỗi vào ReportNG
@@ -157,14 +164,18 @@ public class BaseTest {
 		return pass;
 	}
 
+	public WebDriver getDriverInstance() {
+		return this.driver;
+	}
+
 	protected boolean verifyFalse(boolean condition) {
 		boolean pass = true;
 		try {
 			Assert.assertFalse(condition);
-			System.out.println(" -------------------------- PASSED -------------------------- ");
+			log.info(" -------------------------- PASSED -------------------------- ");
 
 		} catch (Throwable e) {
-			System.out.println(" -------------------------- FAILED -------------------------- ");
+			log.info(" -------------------------- FAILED -------------------------- ");
 			pass = false;
 			VerificationFailures.getFailures().addFailureForTest(Reporter.getCurrentTestResult(), e);
 			Reporter.getCurrentTestResult().setThrowable(e);
@@ -176,10 +187,10 @@ public class BaseTest {
 		boolean pass = true;
 		try {
 			Assert.assertEquals(actual, expected);
-			System.out.println(" -------------------------- PASSED -------------------------- ");
+			log.info(" -------------------------- PASSED -------------------------- ");
 		} catch (Throwable e) {
 			pass = false;
-			System.out.println(" -------------------------- FAILED -------------------------- ");
+			log.info(" -------------------------- FAILED -------------------------- ");
 			VerificationFailures.getFailures().addFailureForTest(Reporter.getCurrentTestResult(), e);
 			Reporter.getCurrentTestResult().setThrowable(e);
 		}

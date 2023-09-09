@@ -14,16 +14,16 @@ public class Topic04_SwitchCase_For_ForEach {
 	WebDriver driver;
 	String projectPath = System.getProperty("user.dir");
 	Scanner scanner = new Scanner(System.in);
-	
+
 	@Parameters("browser")
 	//@Test
 	public void TC_01_Switch_Case(String browserName) {
 		driver = getBrowserDriver(browserName);
 		System.out.println(browserName);
-		
+
 		driver.quit();
 	}
-	
+
 	//@Test
 	public void TC_02_showSoNgayCuaThang() {
 		int month = scanner.nextInt();
@@ -49,19 +49,19 @@ public class Topic04_SwitchCase_For_ForEach {
 		default:
 			System.out.println("Vui long nhap thang trong khoảng từ 1-12");
 			break;
-		
+
 		}
 		}
-	
+
 	//@Test
 	public void TC_03_showSoTiengAnh() {
 		// Cannot switch on a value of type float. Only convertible int values, strings or enum variables are permitted
-		// Nhược điểm của switch- case: 1- chỉ nhận int/string/enum; 
+		// Nhược điểm của switch- case: 1- chỉ nhận int/string/enum;
 		// 2- Không dùng với các toán tử trong case: = < > != ==
 		// Nhược điểm của If-else: khó để đọc code; không check trùng lặp
-		
+
 		// enum variables= constant;
-		
+
 		int number = scanner.nextInt();
 		switch (number) {
 		case 1:
@@ -97,10 +97,10 @@ public class Topic04_SwitchCase_For_ForEach {
 		default:
 			System.out.println("Vui long nhap thang trong khoảng từ 1-10");
 			break;
-		
+
 		}
 		}
-	
+
 
 	@Test
 	public void TC_04_PhepToan() {
@@ -115,7 +115,7 @@ public class Topic04_SwitchCase_For_ForEach {
 		case "-":
 			System.out.println("A- B = " + (numberA- numberB));
 			break;
-			
+
 		case "*":
 			System.out.println("A*B = " + (numberA* numberB));
 			break;
@@ -127,9 +127,9 @@ public class Topic04_SwitchCase_For_ForEach {
 			break;
 		}
 	}
-	
+
 	public WebDriver getBrowserDriver(String browserName) {
-		
+
 		switch (browserName) {
 		case "chrome":
 			System.setProperty("webdriver.chrome.driver", projectPath + "\\browserDrivers\\chromedriver.exe");
@@ -146,16 +146,16 @@ public class Topic04_SwitchCase_For_ForEach {
 		case "ie":
 			System.setProperty("webdriver.ie.driver", projectPath + "\\browserDrivers\\IEDriverServer.exe");
 			driver = new InternetExplorerDriver();
-			break;	
+			break;
 		default:
 			new RuntimeException("Please input correct the browser name!");
 		    break;
 		}
 		return driver;
-		
+
 	}
-	
-	
+
+
 
 }
 

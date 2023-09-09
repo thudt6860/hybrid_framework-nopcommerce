@@ -398,7 +398,7 @@ public class BasePage {
 		WebDriverWait explicitWait = new WebDriverWait(driver, longTimeout);
 		JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
 
-		ExpectedCondition<Boolean> jQueryLoad = new ExpectedCondition<Boolean>() {
+		ExpectedCondition<Boolean> jQueryLoad = new ExpectedCondition<>() {
 			@Override
 			public Boolean apply(WebDriver driver) {
 				try {
@@ -409,7 +409,7 @@ public class BasePage {
 			}
 		};
 
-		ExpectedCondition<Boolean> jsLoad = new ExpectedCondition<Boolean>() {
+		ExpectedCondition<Boolean> jsLoad = new ExpectedCondition<>() {
 			@Override
 			public Boolean apply(WebDriver driver) {
 				return jsExecutor.executeScript("return document.readyState").toString().equals("complete");

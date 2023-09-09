@@ -1,0 +1,175 @@
+[INFO ]  [2023-09-03 15:57:56,390] Register - Step 01: Navigate to ' Register' page
+[INFO ]  [2023-09-03 15:57:57,609] Register - Step 02: Enter to FirstName textbox with value is 'Thu'
+[INFO ]  [2023-09-03 15:57:57,887] Register - Step 03: Enter to LastName textbox with value is 'Duong'
+[INFO ]  [2023-09-03 15:57:58,145] Register - Step 04: Enter to Email Address textbox with value is 'afc906@gmail.com'
+[INFO ]  [2023-09-03 15:57:58,393] Register - Step 05: Enter to Password textbox with value is '123456'
+[INFO ]  [2023-09-03 15:57:58,628] Register - Step 06: Enter to Confirm Password textbox with value is '123456'
+[INFO ]  [2023-09-03 15:57:58,885] Register - Step 07: Click to 'Register' button
+[INFO ]  [2023-09-03 15:57:59,869] Register - Step 08: Verify register success message is displayed
+[INFO ]  [2023-09-03 15:58:00,011] Login - Step 01: Navigate to 'Login Page'
+[INFO ]  [2023-09-03 15:58:00,581] Register - Step 02: Enter to Email textbox with value is 'afc906@gmail.com'
+[INFO ]  [2023-09-03 15:58:00,846] Register - Step 03: Enter to Password textbox with value is '123456'
+[INFO ]  [2023-09-03 15:58:01,096] Register - Step 04: Click to Login button
+[INFO ]  [2023-09-03 15:58:02,662] Register - Step 05: Verify 'My Account' link is displayed
+[INFO ]  [2023-09-03 15:58:02,777] Register - Step 06: Navigate to 'My Account' page
+[INFO ]  [2023-09-03 15:58:03,344] Register - Step 07: Verify Customer Infor page is displayed
+[2023-09-03 16:27:56,095] Register - Step 01: Navigate to ' Register' page
+[2023-09-03 16:27:57,079] Register - Step 02: Enter to FirstName textbox with value is 'Thu'
+[2023-09-03 16:27:57,208] Register - Step 03: Enter to LastName textbox with value is 'Duong'
+[2023-09-03 16:27:57,339] Register - Step 04: Enter to Email Address textbox with value is 'afc5428@gmail.com'
+[2023-09-03 16:27:57,465] Register - Step 05: Enter to Password textbox with value is '123456'
+[2023-09-03 16:27:57,599] Register - Step 06: Enter to Confirm Password textbox with value is '123456'
+[2023-09-03 16:27:57,734] Register - Step 07: Click to 'Register' button
+[2023-09-03 16:27:58,366] Register - Step 08: Verify register success message is displayed
+[2023-09-03 16:27:58,431]  -------------------------- FAILED -------------------------- 
+[2023-09-03 16:27:58,434] Login - Step 01: Navigate to 'Login Page'
+[2023-09-03 16:27:58,797] Register - Step 02: Enter to Email textbox with value is 'afc5428@gmail.com'
+[2023-09-03 16:27:58,918] Register - Step 03: Enter to Password textbox with value is '123456'
+[2023-09-03 16:27:59,044] Register - Step 04: Click to Login button
+[2023-09-03 16:27:59,647] Register - Step 05: Verify 'My Account' link is displayed
+[2023-09-03 16:27:59,717]  -------------------------- FAILED -------------------------- 
+[2023-09-03 16:27:59,717] Register - Step 06: Navigate to 'My Account' page
+[2023-09-03 16:28:00,072] Register - Step 07: Verify Customer Infor page is displayed
+[2023-09-03 16:28:00,136]  -------------------------- FAILED -------------------------- 
+[2023-09-03 16:42:31,848] Register - Step 01: Navigate to ' Register' page
+[2023-09-03 16:42:32,309] Register - Step 02: Enter to FirstName textbox with value is 'Thu'
+[2023-09-03 16:42:32,458] Register - Step 03: Enter to LastName textbox with value is 'Duong'
+[2023-09-03 16:42:32,586] Register - Step 04: Enter to Email Address textbox with value is 'afc1527@gmail.com'
+[2023-09-03 16:42:32,719] Register - Step 05: Enter to Password textbox with value is '123456'
+[2023-09-03 16:42:32,849] Register - Step 06: Enter to Confirm Password textbox with value is '123456'
+[2023-09-03 16:42:32,973] Register - Step 07: Click to 'Register' button
+[2023-09-03 16:42:33,665] Register - Step 08: Verify register success message is displayed
+[2023-09-03 16:42:33,714]  -------------------------- FAILED -------------------------- 
+[2023-09-03 16:42:33,718] Login - Step 01: Navigate to 'Login Page'
+[2023-09-03 16:42:34,593] Register - Step 02: Enter to Email textbox with value is 'afc1527@gmail.com'
+[2023-09-03 16:42:34,713] Register - Step 03: Enter to Password textbox with value is '123456'
+[2023-09-03 16:42:34,839] Register - Step 04: Click to Login button
+[2023-09-03 16:42:35,515] Register - Step 05: Verify 'My Account' link is displayed
+[2023-09-03 16:42:35,576]  -------------------------- FAILED -------------------------- 
+[2023-09-03 16:42:35,576] Register - Step 06: Navigate to 'My Account' page
+[2023-09-03 16:42:35,984] Register - Step 07: Verify Customer Infor page is displayed
+[2023-09-03 16:42:36,043]  -------------------------- FAILED -------------------------- 
+[2023-09-03 17:07:30,525] Register - Step 01: Navigate to ' Register' page
+[2023-09-03 17:07:31,506] Register - Step 02: Enter to FirstName textbox with value is 'Thu'
+[2023-09-03 17:07:31,632] Register - Step 03: Enter to LastName textbox with value is 'Duong'
+[2023-09-03 17:07:31,761] Register - Step 04: Enter to Email Address textbox with value is 'afc5839@gmail.com'
+[2023-09-03 17:07:31,885] Register - Step 05: Enter to Password textbox with value is '123456'
+[2023-09-03 17:07:32,005] Register - Step 06: Enter to Confirm Password textbox with value is '123456'
+[2023-09-03 17:07:32,128] Register - Step 07: Click to 'Register' button
+[2023-09-03 17:07:32,878] Register - Step 08: Verify register success message is displayed
+[2023-09-03 17:07:32,932]  -------------------------- FAILED -------------------------- 
+[2023-09-03 17:07:32,935] Login - Step 01: Navigate to 'Login Page'
+[2023-09-03 17:07:33,296] Register - Step 02: Enter to Email textbox with value is 'afc5839@gmail.com'
+[2023-09-03 17:07:33,412] Register - Step 03: Enter to Password textbox with value is '123456'
+[2023-09-03 17:07:33,521] Register - Step 04: Click to Login button
+[2023-09-03 17:07:34,166] Register - Step 05: Verify 'My Account' link is displayed
+[2023-09-03 17:07:34,224]  -------------------------- FAILED -------------------------- 
+[2023-09-03 17:07:34,224] Register - Step 06: Navigate to 'My Account' page
+[2023-09-03 17:07:34,592] Register - Step 07: Verify Customer Infor page is displayed
+[2023-09-03 17:07:34,659]  -------------------------- FAILED -------------------------- 
+[2023-09-03 17:34:51,977] Register - Step 01: Navigate to ' Register' page
+[2023-09-03 17:34:53,101] Register - Step 02: Enter to FirstName textbox with value is 'Thu'
+[2023-09-03 17:34:53,197] Register - Step 03: Enter to LastName textbox with value is 'Duong'
+[2023-09-03 17:34:53,291] Register - Step 04: Enter to Email Address textbox with value is 'afc9435@gmail.com'
+[2023-09-03 17:34:53,386] Register - Step 05: Enter to Password textbox with value is '123456'
+[2023-09-03 17:34:53,471] Register - Step 06: Enter to Confirm Password textbox with value is '123456'
+[2023-09-03 17:34:53,547] Register - Step 07: Click to 'Register' button
+[2023-09-03 17:34:54,493] Register - Step 08: Verify register success message is displayed
+[2023-09-03 17:34:54,543]  -------------------------- FAILED -------------------------- 
+[2023-09-03 17:34:54,546] Login - Step 01: Navigate to 'Login Page'
+[2023-09-03 17:34:55,577] Register - Step 02: Enter to Email textbox with value is 'afc9435@gmail.com'
+[2023-09-03 17:34:55,674] Register - Step 03: Enter to Password textbox with value is '123456'
+[2023-09-03 17:34:55,758] Register - Step 04: Click to Login button
+[2023-09-03 17:34:56,416] Register - Step 05: Verify 'My Account' link is displayed
+[2023-09-03 17:34:56,498]  -------------------------- FAILED -------------------------- 
+[2023-09-03 17:34:56,498] Register - Step 06: Navigate to 'My Account' page
+[2023-09-03 17:34:56,854] Register - Step 07: Verify Customer Infor page is displayed
+[2023-09-03 17:34:56,933]  -------------------------- FAILED -------------------------- 
+[2023-09-03 17:34:59,663] Register - Step 01: Navigate to ' Register' page
+[2023-09-03 17:35:00,610] Register - Step 02: Enter to FirstName textbox with value is 'Thu'
+[2023-09-03 17:35:00,740] Register - Step 03: Enter to LastName textbox with value is 'Duong'
+[2023-09-03 17:35:00,878] Register - Step 04: Enter to Email Address textbox with value is 'afc6536@gmail.com'
+[2023-09-03 17:35:01,020] Register - Step 05: Enter to Password textbox with value is '123456'
+[2023-09-03 17:35:01,153] Register - Step 06: Enter to Confirm Password textbox with value is '123456'
+[2023-09-03 17:35:01,274] Register - Step 07: Click to 'Register' button
+[2023-09-03 17:35:02,557] Register - Step 08: Verify register success message is displayed
+[2023-09-03 17:35:02,618]  -------------------------- FAILED -------------------------- 
+[2023-09-03 17:35:02,620] Login - Step 01: Navigate to 'Login Page'
+[2023-09-03 17:35:03,026] Register - Step 02: Enter to Email textbox with value is 'afc6536@gmail.com'
+[2023-09-03 17:35:03,161] Register - Step 03: Enter to Password textbox with value is '123456'
+[2023-09-03 17:35:03,290] Register - Step 04: Click to Login button
+[2023-09-03 17:35:03,941] Register - Step 05: Verify 'My Account' link is displayed
+[2023-09-03 17:35:04,006]  -------------------------- FAILED -------------------------- 
+[2023-09-03 17:35:04,006] Register - Step 06: Navigate to 'My Account' page
+[2023-09-03 17:35:04,377] Register - Step 07: Verify Customer Infor page is displayed
+[2023-09-03 17:35:04,435]  -------------------------- FAILED -------------------------- 
+[2023-09-03 21:42:47,424] Register - Step 01: Navigate to ' Register' page
+[2023-09-03 21:42:48,401] Register - Step 02: Enter to FirstName textbox with value is 'Thu'
+[2023-09-03 21:42:48,523] Register - Step 03: Enter to LastName textbox with value is 'Duong'
+[2023-09-03 21:42:48,658] Register - Step 04: Enter to Email Address textbox with value is 'afc2682@gmail.com'
+[2023-09-03 21:42:48,784] Register - Step 05: Enter to Password textbox with value is '123456'
+[2023-09-03 21:42:48,915] Register - Step 06: Enter to Confirm Password textbox with value is '123456'
+[2023-09-03 21:42:49,041] Register - Step 07: Click to 'Register' button
+[2023-09-03 21:42:50,233] Register - Step 08: Verify register success message is displayed
+[2023-09-03 21:42:50,295]  -------------------------- FAILED -------------------------- 
+[2023-09-03 21:42:50,412] Login - Step 01: Navigate to 'Login Page'
+[2023-09-03 21:42:50,773] Register - Step 02: Enter to Email textbox with value is 'afc2682@gmail.com'
+[2023-09-03 21:42:50,895] Register - Step 03: Enter to Password textbox with value is '123456'
+[2023-09-03 21:42:51,019] Register - Step 04: Click to Login button
+[2023-09-03 21:42:51,652] Register - Step 05: Verify 'My Account' link is displayed
+[2023-09-03 21:42:51,721]  -------------------------- FAILED -------------------------- 
+[2023-09-03 21:42:51,721] Register - Step 06: Navigate to 'My Account' page
+[2023-09-03 21:42:52,074] Register - Step 07: Verify Customer Infor page is displayed
+[2023-09-03 21:42:52,141]  -------------------------- FAILED -------------------------- 
+[2023-09-03 22:01:06,364] Register - Step 01: Navigate to ' Register' page
+[2023-09-03 22:01:07,368] Register - Step 02: Enter to FirstName textbox with value is 'Thu'
+[2023-09-03 22:01:07,502] Register - Step 03: Enter to LastName textbox with value is 'Duong'
+[2023-09-03 22:01:07,637] Register - Step 04: Enter to Email Address textbox with value is 'afc7983@gmail.com'
+[2023-09-03 22:01:07,775] Register - Step 05: Enter to Password textbox with value is '123456'
+[2023-09-03 22:01:07,896] Register - Step 06: Enter to Confirm Password textbox with value is '123456'
+[2023-09-03 22:01:08,020] Register - Step 07: Click to 'Register' button
+[2023-09-03 22:01:08,738] Register - Step 08: Verify register success message is displayed
+[2023-09-03 22:01:08,901] Login - Step 01: Navigate to 'Login Page'
+[2023-09-03 22:01:09,269] Register - Step 02: Enter to Email textbox with value is 'afc7983@gmail.com'
+[2023-09-03 22:01:09,371] Register - Step 03: Enter to Password textbox with value is '123456'
+[2023-09-03 22:01:09,479] Register - Step 04: Click to Login button
+[2023-09-03 22:01:10,110] Register - Step 05: Verify 'My Account' link is displayed
+[2023-09-03 22:14:59,230] Register - Step 01: Navigate to ' Register' page
+[2023-09-03 22:15:00,258] Register - Step 02: Enter to FirstName textbox with value is 'Thu'
+[2023-09-03 22:15:00,391] Register - Step 03: Enter to LastName textbox with value is 'Duong'
+[2023-09-03 22:15:00,542] Register - Step 04: Enter to Email Address textbox with value is 'afc5515@gmail.com'
+[2023-09-03 22:15:00,664] Register - Step 05: Enter to Password textbox with value is '123456'
+[2023-09-03 22:15:00,784] Register - Step 06: Enter to Confirm Password textbox with value is '123456'
+[2023-09-03 22:15:00,907] Register - Step 07: Click to 'Register' button
+[2023-09-03 22:15:02,185] Register - Step 08: Verify register success message is displayed
+[2023-09-03 22:15:02,364] Login - Step 01: Navigate to 'Login Page'
+[2023-09-03 22:15:02,737] Register - Step 02: Enter to Email textbox with value is 'afc5515@gmail.com'
+[2023-09-03 22:15:02,861] Register - Step 03: Enter to Password textbox with value is '123456'
+[2023-09-03 22:15:02,964] Register - Step 04: Click to Login button
+[2023-09-03 22:15:03,624] Register - Step 05: Verify 'My Account' link is displayed
+[2023-09-03 22:17:59,731] Register - Step 01: Navigate to ' Register' page
+[2023-09-03 22:18:00,762] Register - Step 02: Enter to FirstName textbox with value is 'Thu'
+[2023-09-03 22:18:00,901] Register - Step 03: Enter to LastName textbox with value is 'Duong'
+[2023-09-03 22:18:01,035] Register - Step 04: Enter to Email Address textbox with value is 'afc7196@gmail.com'
+[2023-09-03 22:18:01,160] Register - Step 05: Enter to Password textbox with value is '123456'
+[2023-09-03 22:18:01,278] Register - Step 06: Enter to Confirm Password textbox with value is '123456'
+[2023-09-03 22:18:01,402] Register - Step 07: Click to 'Register' button
+[2023-09-03 22:18:02,536] Register - Step 08: Verify register success message is displayed
+[2023-09-03 22:18:02,690] Login - Step 01: Navigate to 'Login Page'
+[2023-09-03 22:18:03,083] Register - Step 02: Enter to Email textbox with value is 'afc7196@gmail.com'
+[2023-09-03 22:18:03,206] Register - Step 03: Enter to Password textbox with value is '123456'
+[2023-09-03 22:18:03,335] Register - Step 04: Click to Login button
+[2023-09-03 22:18:03,903] Register - Step 05: Verify 'My Account' link is displayed
+[2023-09-03 22:52:39,685] Register - Step 01: Navigate to ' Register' page
+[2023-09-03 22:52:40,706] Register - Step 02: Enter to FirstName textbox with value is 'Thu'
+[2023-09-03 22:52:40,825] Register - Step 03: Enter to LastName textbox with value is 'Duong'
+[2023-09-03 22:52:40,955] Register - Step 04: Enter to Email Address textbox with value is 'afc4815@gmail.com'
+[2023-09-03 22:52:41,081] Register - Step 05: Enter to Password textbox with value is '123456'
+[2023-09-03 22:52:41,201] Register - Step 06: Enter to Confirm Password textbox with value is '123456'
+[2023-09-03 22:52:41,323] Register - Step 07: Click to 'Register' button
+[2023-09-03 22:52:42,469] Register - Step 08: Verify register success message is displayed
+[2023-09-03 22:52:42,524] Login - Step 01: Navigate to 'Login Page'
+[2023-09-03 22:52:42,946] Register - Step 02: Enter to Email textbox with value is 'afc4815@gmail.com'
+[2023-09-03 22:52:43,072] Register - Step 03: Enter to Password textbox with value is '123456'
+[2023-09-03 22:52:43,196] Register - Step 04: Click to Login button
+[2023-09-03 22:52:43,893] Register - Step 05: Verify 'My Account' link is displayed

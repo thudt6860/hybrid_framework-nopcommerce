@@ -22,7 +22,7 @@ public class PartVII_Array {
 		}
 
 		// trường hợp động
-		ArrayList<String> stdName = new ArrayList<String>();
+		ArrayList<String> stdName = new ArrayList<>();
 		// Khi chạy code mới add (Runtime)
 		for (String std : studentName) {
 			stdName.add(std);

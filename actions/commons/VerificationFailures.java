@@ -20,7 +20,7 @@ public class VerificationFailures extends HashMap<ITestResult, List<Throwable>> 
 
 	public List<Throwable> getFailuresForTest(ITestResult result) {
 		List<Throwable> exceptions = get(result);
-		return exceptions == null ? new ArrayList<Throwable>() : exceptions;
+		return exceptions == null ? new ArrayList<>() : exceptions;
 	}
 
 	public void addFailureForTest(ITestResult result, Throwable throwable) {

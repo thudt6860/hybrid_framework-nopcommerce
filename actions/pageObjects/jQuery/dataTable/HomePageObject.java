@@ -38,7 +38,7 @@ public class HomePageObject extends BasePage {
 		// Cách làm: duyệt hết 24 trang paging để lấy ra tất cả các row của từng page lưu vào list
 		int totalPage = getElementSize(driver, HomePageUI.TOTAL_PAGINATION);
 		System.out.println("Total size =" + totalPage);
-		List<String> allRowValueAllPage = new ArrayList<String>(); // list lưu all row ở all page (giá trị lưu vào List có thể trùng nhau)
+		List<String> allRowValueAllPage = new ArrayList<>(); // list lưu all row ở all page (giá trị lưu vào List có thể trùng nhau)
 		// Nếu không muốn lấy giá trị trùng thì dùng List Set<String>
 		// Set<String> allRowValueUniqueAllPage = new HashSet<>();
 

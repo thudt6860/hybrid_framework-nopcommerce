@@ -22,8 +22,8 @@ public class Topic7_Array {
 		students[1] = new Topic7_Array("Thu", 25);
 		students[2] = new Topic7_Array("Thang", 31);
 
-		for (int i = 0; i < students.length; i++) {
-			students[i].display();
+		for (Topic7_Array student : students) {
+			student.display();
 		}
 	}
 }

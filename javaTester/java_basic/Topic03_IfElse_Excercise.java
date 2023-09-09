@@ -10,10 +10,10 @@ public class Topic03_IfElse_Excercise {
 	WebDriver driver;
 	String projectPath = System.getProperty("user.dir");
 	Scanner scanner = new Scanner(System.in);
-	
+
 //	@Test
 	public void TC_01() {
-		
+
 		int number = scanner.nextInt();
 		if(number%2==0) {
 			System.out.println("số " +number + " là số chẵn");
@@ -21,7 +21,7 @@ public class Topic03_IfElse_Excercise {
 			System.out.println("số " +number + " là số lẻ");
 		}
 	}
-	
+
 	//@Test
 	public void baitap02() {
 		int numberA = scanner.nextInt();
@@ -33,7 +33,7 @@ public class Topic03_IfElse_Excercise {
 		}else {
 			 System.out.println("Số"+numberA + " = số "+ numberB);
 		}
-		
+
 	}
 	//@Test
 	public void baitap03() {
@@ -43,26 +43,26 @@ public class Topic03_IfElse_Excercise {
 		// Reference: String
 		// Kiểm tra cái value của biến
 		// Kiểm tra vị trí của biến trong vùng nhớ
-		
+
 		if(firstStudent.equals(secondStudent)) {
 			System.out.println("2 người cùng tên");
 		}else {
 			System.out.println("2 người khác tên");
 		}
-		
+
 		if(firstStudent == secondStudent) {
 			System.out.println("2 người cùng tên");
 		}else {
 			System.out.println("2 người khác tên");
 		}
 	}
-	
+
 	//@Test
 	public void baitap04() {
 		int numberA = scanner.nextInt();
 		int numberB = scanner.nextInt();
 		int numberC = scanner.nextInt();
-		
+
 		if (numberA> numberB && numberA> numberC) {
 			System.out.println(numberA + " là số lớn nhất");
 		} else if(numberB > numberC){
@@ -71,18 +71,18 @@ public class Topic03_IfElse_Excercise {
 			System.out.println(numberC + " là số lớn nhất");
 		}
 	}
-	
+
 	//@Test
 	public void baitap05() {
 		int numberA = scanner.nextInt();
-		
+
 		if (numberA>10 && numberA<100) {
 			System.out.println(numberA + " Nằm trong khoảng (10- 100)");
 		} else {
            System.out.println(numberA + " ngoài khoảng (10-100)");
 		}
 	}
-	
+
 	//@Test
 	public void baitap06() {
 		float numberA = scanner.nextFloat();
@@ -98,7 +98,7 @@ public class Topic03_IfElse_Excercise {
 			System.out.println("Vui long nhap lại điểm: ");
 		}
 	}
-	
+
 	@Test
 	public void baitap07() {
 		int month = scanner.nextInt();
