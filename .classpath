@@ -47,12 +47,11 @@
 	<classpathentry kind="lib" path="libReportNG/reportng-1.1.4.jar"/>
 	<classpathentry kind="lib" path="libReportNG/reportng-1.1.4-sources.jar"/>
 	<classpathentry kind="lib" path="libReportNG/velocity-1.4.jar"/>
-	<classpathentry kind="lib" path="libExtendV2/bson-3.0.4.jar"/>
-	<classpathentry kind="lib" path="libExtendV2/extentreports-2.41.2.jar"/>
-	<classpathentry kind="lib" path="libExtendV2/freemarker-2.3.23.jar"/>
-	<classpathentry kind="lib" path="libExtendV2/jsoup-1.8.3.jar"/>
-	<classpathentry kind="lib" path="libExtendV2/mongodb-driver-3.0.4.jar"/>
-	<classpathentry kind="lib" path="libExtendV2/mongodb-driver-core-3.0.4.jar"/>
-	<classpathentry kind="lib" path="libExtendV2/sqlite-jdbc-3.8.11.1.jar"/>
+	<classpathentry kind="lib" path="libExtentV5/extentreports-5.1.0.jar"/>
+	<classpathentry kind="lib" path="libExtentV5/freemarker-2.3.32.jar"/>
+	<classpathentry kind="lib" path="libExtentV5/gson-2.10.1.jar"/>
+	<classpathentry kind="lib" path="libExtentV5/lombok-1.18.26.jar"/>
+	<classpathentry kind="lib" path="libExtentV5/reactive-streams-1.0.4.jar"/>
+	<classpathentry kind="lib" path="libExtentV5/rxjava-3.1.6.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

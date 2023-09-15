@@ -40,14 +40,15 @@
   <listeners>
          <listener class-name  = "commons.MethodListener"/>
        <!--  <listener class-name = "reportConfig.ReportNGListener"/> -->
-          <listener class-name = "reportConfig.ExtentReportListenerV2"/>
+      <!--     <listener class-name = "reportConfig.ExtentReportListenerV2"/>  -->
+       <listener class-name = "reportConfig.ExtentTestListenerV5" />
          <listener class-name = "org.uncommons.reportng.HTMLReporter"/>
          <listener class-name = "org.uncommons.reportng.JUnitXMLReporter"/>
   </listeners>
    <test name="Run on chrome">
   <parameter name ="browser" value ="chrome" />
     <classes>
-      <class name="com.nopcommerce.user.Framwork_Bai24_ExtentV2_Screenshot" />
+      <class name="com.nopcommerce.user.Framwork_Bai25_ExtentV5" />
     </classes>
   </test>
   
