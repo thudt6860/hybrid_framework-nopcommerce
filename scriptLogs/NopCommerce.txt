@@ -1,0 +1,15 @@
+[2023-10-27 21:57:27,202] Register - Step 01: Navigate to ' Register' page
+[2023-10-27 21:57:28,287] Register - Step 02: Enter to FirstName textbox with value is 'Thu'
+[2023-10-27 21:57:28,416] Register - Step 03: Enter to LastName textbox with value is 'Duong'
+[2023-10-27 21:57:28,823] Register - Step 04: Enter to Email Address textbox with value is 'afc6517@gmail.com'
+[2023-10-27 21:57:29,007] Register - Step 05: Enter to Password textbox with value is '123456'
+[2023-10-27 21:57:39,111] Register - Step 06: Enter to Confirm Password textbox with value is '123456'
+[2023-10-27 21:57:39,218] Register - Step 07: Click to 'Register' button
+[2023-10-27 21:57:39,828] Register - Step 08: Verify register success message is displayed
+[2023-10-27 21:57:40,008] Login - Step 01: Navigate to 'Login Page'
+[2023-10-27 21:57:40,380] Login - Step 02: Enter to Email textbox with value is 'afc6517@gmail.com'
+[2023-10-27 21:57:40,477] Login- Step 03: Enter to Password textbox with value is '123456'
+[2023-10-27 21:57:40,591] Login - Step 04: Click to Login button
+[2023-10-27 21:57:41,220] Login- Step 05: Verify 'My Account' link is displayed
+[2023-10-27 21:57:41,434] OS name = windows 11
+[2023-10-27 21:57:41,434] Driver instance name = chromedriver: chrome on windows (b6d310573eb41fbec8f872cf8e71c50f)
